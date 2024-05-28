@@ -2,7 +2,7 @@ class BlogPostsController < ApplicationController
   protect_from_forgery with: :null_session
 
   def index
-    blog_post = BlogPost.find_all
+    blog_post = BlogPost.all
     render json:  blog_post
   end
 
