@@ -3,16 +3,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get "/posts", to:"blog_posts#index"
-  post "/posts", to:"blog_posts#create"
-  patch "/posts/:id", to:"blog_posts#update"
-  delete "/posts/:id", to:"blog_posts#destroy"
+  resources :blog_posts, only: [:index, :create, :update, :destroy]
 
-  get "/users",to:"users#index"
-  post "/users", to: "users#create"
-  patch "/users/:id", to:"users#update"
-  delete "/users/:id", to:"users#destroy"
-
+  resources :users, only: [:index, :create, :update, :destroy]
   get "/users/:id", to:"users#find_by_id"
 
 end
