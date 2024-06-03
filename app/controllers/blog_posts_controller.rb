@@ -6,6 +6,10 @@ class BlogPostsController < ApplicationController
     render json:  blog_post
   end
 
+  def find_by_id
+    blog_post = BlogPost.find_by(id: params[:id])
+    render json:blog_post
+  end
   def create
     post = BlogPost.create(post_params)
     render json: post
