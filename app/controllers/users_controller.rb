@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  before_action :authenticate_user!
   def index
     render json: User.all
   end
@@ -22,6 +22,6 @@ class UsersController < ApplicationController
     render json: user
   end
   def filter_params
-    params.require(:user).permit(:name, :username, :img_url)
+    params.require(:user).permit(:name, :username, :img_url,:email, :password, :sign_up_params  )
   end
 end

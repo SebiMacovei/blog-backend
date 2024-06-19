@@ -1,14 +1,17 @@
 class BlogPostsController < ApplicationController
-  protect_from_forgery with: :null_session
-
+  before_action :authenticate_user!
   def index
     blog_post = BlogPost.all
     render json:  blog_post
   end
 
   def find_by_id
-    blog_post = BlogPost.find_by(id: params[:id])
-    render json:blog_post
+    blog_post = BlogPost.find(params[:id])
+    render json:blog_post.to_json(:include => {
+      :comments => {
+        :include => :user},
+      :user => {}
+    })
   end
   def create
     post = BlogPost.create(post_params)
@@ -31,6 +34,4 @@ class BlogPostsController < ApplicationController
   def post_params
     params.require(:blog_post).permit(:title, :content, :views, :author)
   end
-
-  public
 end

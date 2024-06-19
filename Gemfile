@@ -14,6 +14,7 @@ gem "sqlite3", "~> 1.4"
 
 gem 'rack-cors'
 
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -28,6 +29,10 @@ gem "stimulus-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
+
+gem 'devise'
+gem 'devise-jwt'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
